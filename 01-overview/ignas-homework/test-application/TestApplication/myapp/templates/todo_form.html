@@ -1,0 +1,15 @@
+<h1>{% if todo %}Edit{% else %}Create{% endif %} TODO</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <label>Title:</label><br>
+  <input type="text" name="title" value="{{ todo.title|default:'' }}"><br><br>
+
+  <label>Description:</label><br>
+  <textarea name="description">{{ todo.description|default:'' }}</textarea><br><br>
+
+  <label>Due date:</label><br>
+  <input type="date" name="due_date" value="{{ todo.due_date|default:'' }}"><br><br>
+
+  <button type="submit">Save</button>
+</form>
